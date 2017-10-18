@@ -1,3 +1,12 @@
+//**********************************
+//Mark Maupin
+//homework 2 part 1
+//CS4328V
+//10/17/2017
+//KNN implementation- where k = 1, 3 and 5
+//exclusively for the Iris data set
+//********************************
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -13,7 +22,9 @@ struct Iris {
 	vector<double> sim;
 };
 
-
+//***************************
+//initializeTest: initialize initial values
+//*********************
 vector<Iris> initializeTest() {
 	vector<Iris> vec;
 	Iris temp;
@@ -51,6 +62,10 @@ void print(vector<Iris> vec) {
 	}
 }
 
+//******************************
+//name: utility function, returns a string
+//in respect to how each classification is encoded
+//***************************
 string name(int lab) {
 	switch (lab) {
 	case 1:
@@ -62,6 +77,11 @@ string name(int lab) {
 	}
 }
 
+//*****************************
+//printResults: print function that calls results
+//takes the initial data vector, array for smallest 5 values
+//the iris object that's being evaluated, and the size of K
+//*****************************
 void printResults(vector<Iris> vec, int mapping[5], Iris test, int count) {
 	int total1 = 0;
 	int total2 = 0;
@@ -129,7 +149,10 @@ vector<Iris> normalization(vector<Iris> vec) {
 	return vec;
 }
 
-//
+//**********************************
+//calculates eucledian distance and stores it in each
+//Iris object of the vector
+//******************************
 void similiarity(vector<Iris> &vec, vector<Iris> test) {
 	double temp;
 	for (int i = 0; i < vec.size(); ++i) {
@@ -143,6 +166,10 @@ void similiarity(vector<Iris> &vec, vector<Iris> test) {
 	}
 }
 
+//*******************************
+//finds the nearest values and stores the index
+//in the array used for mapping
+//************************
 void nearest(vector<Iris> vec, int near[5], int index) {
 	double temp;
 	bool flag;
